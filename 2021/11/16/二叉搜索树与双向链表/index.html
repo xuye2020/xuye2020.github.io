@@ -3,15 +3,15 @@
 
 	<head>
 		
-<title>DFS/BFS笔记与Python实现-normal blog</title>
+<title>剑指offer36 二叉搜索树与双向链表-normal blog</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="shortcut icon" type="image/x-icon" href="/image/logo.jpeg">
 
 
-<meta name="keywords" content="图的遍历,">
-<meta name="description" content="DFS/BFS笔记与代码">
+<meta name="keywords" content="LeetCode日记,树的遍历,">
+<meta name="description" content="">
 
 
 <script src="/js/jquery.min.js"></script>
@@ -245,11 +245,13 @@
         <ul class="tag">
             
             
-            <li><a href="/tags/图的遍历">图的遍历</a></li>
+            <li><a href="/tags/LeetCode日记">LeetCode日记</a></li>
+            
+            <li><a href="/tags/树的遍历">树的遍历</a></li>
             
             
         </ul>
-        <h1>DFS/BFS笔记与Python实现</h1>
+        <h1>剑指offer36 二叉搜索树与双向链表</h1>
         <div class="article-info">
             <div class="article-author">
                 
@@ -262,28 +264,19 @@
                 </svg>
                 
                 <span> <a href="">Xu</a></span>
-                <p>2021-11-15 00:00:00</p>
+                <p>2021-11-16 15:43:07</p>
             </div>
         </div>
     </div>
 </div>
 <div class="article-content">
     <div id="article" class="content">
-        <p>拖了好久终于搞了自己的博客，开始写了第一篇文章，之所以又萌生出来写博客的想法是因为两点，一是感觉云笔记还是用起来没有感觉，二是最近在刷LeetCode的过程中发觉有些东西已经忘了，所以便想记录下来，整理整理并且和大家分享。就拿DFS来说吧，由于太久没写过相关的代码，已经忘了怎么在图上实现而只记得大致思路，这篇文章里面会梳理下算法实现思路并且附上Python的实现。</p>
-<h2 id="1-DFS"><a href="#1-DFS" class="headerlink" title="1 DFS"></a>1 DFS</h2><h3 id="1-1-DFS思想"><a href="#1-1-DFS思想" class="headerlink" title="1.1 DFS思想"></a>1.1 DFS思想</h3><p>在我看来，DFS的想法可以肤浅地总结为“不撞南墙不回头”，是一种暴力的搜索算法。DFS的过程可以如下描述：</p>
-<ul>
-<li>1.访问某一个节点v</li>
-<li>2.从当前访问节点选择下一个相邻的节点进行DFS过程，如果不存在下一个相邻的未访问节点则会回溯，回溯到某个节点存在相邻的未访问节点m，并从该未访问节点m开始DFS过程。直到所有和节点v存在路径的节点被访问完毕。</li>
-<li>3.如果图中仍然存在未访问结点，则选择一个未访问结点再次进行DFS过程。</li>
-</ul>
-<br>
-从上述过程可以看出，DFS问题的子结构仍然是DFS问题，所以我们容易想到用递归的方式去编写DFS代码，借助递归我们可以方便的实现回溯。我们还需要一个数据结构来帮助我们实现对已访问结点的记录，在python里set可以保证查询速度，是个好选择。
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><img src="/2021/11/16/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%8E%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/1.png" alt="avatar"></p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>二叉搜索树可以是一棵空树，若不是空树则需满足：若左子树存在则其左边的子树值都比根节点的小，若右子树存在则其右子树结点值都比根结点大，树上任意结点的左右子树也为二叉搜索树。<br>该问题可以如下考虑，对于一棵二叉搜索树来说，如果其左右子树都已经是排序的链表，那么只需要对根结点和左右子树再做一下链接即可，而左右子树同样是二叉搜索树，所以该问题的子问题和问题本身有着同样的结构。于是，该问题可以很好的分解为，将左右子树分别转化为双向链表，再将左右子树根结点连接到根结点。最终，整个树处理完毕后，再处理下首尾结点即可。根据上面的分析，可以想到用递归来做应该是个比较好的选择，那么递归的出口是什么呢？显然，递归的出口应该是从叶子结点进入到None,如果程序进入到None结点，直接退出就好了。<br>写到这里，突然感觉用更直接的方法也能做，那就是直接开一个列表，做中序遍历把节点依此添加进去，这样就列表就是从小到大排的，再直接改每个节点的左右指向即可。下面称这种做法为做法二。</p>
+<p><strong>做法二代码如下：</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string"># Definition for a Node.</span><br><span class="hljs-string">class Node:</span><br><span class="hljs-string">    def __init__(self, val, left=None, right=None):</span><br><span class="hljs-string">        self.val = val</span><br><span class="hljs-string">        self.left = left</span><br><span class="hljs-string">        self.right = right</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">treeToDoublyList</span>(<span class="hljs-params">self, root: <span class="hljs-string">&#x27;Node&#x27;</span></span>) -&gt; &#x27;Node&#x27;:</span><br>        all_node = []<br><br>        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">mid_ord</span>(<span class="hljs-params">root</span>):</span><br>            <span class="hljs-keyword">if</span> root <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:<br>                <span class="hljs-keyword">return</span><br>            mid_ord(root.left)<br>            all_node.append(root)<br>            mid_ord(root.right)<br><br>        mid_ord(root)<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(all_node)):<br>            <span class="hljs-keyword">if</span> i != <span class="hljs-built_in">len</span>(all_node) - <span class="hljs-number">1</span>:<br>                all_node[i].left = all_node[i - <span class="hljs-number">1</span>]<br>                all_node[i].right = all_node[i + <span class="hljs-number">1</span>]<br>            <span class="hljs-keyword">else</span>:<br>                all_node[i].left = all_node[i - <span class="hljs-number">1</span>]<br>                all_node[i].right = all_node[<span class="hljs-number">0</span>]<br>        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(all_node) &gt; <span class="hljs-number">0</span>:<br>            <span class="hljs-keyword">return</span> all_node[<span class="hljs-number">0</span>]<br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span><br><br></code></pre></td></tr></table></figure>
 
-<h3 id="1-2-DFS递归代码"><a href="#1-2-DFS递归代码" class="headerlink" title="1.2 DFS递归代码"></a>1.2 DFS递归代码</h3><p>以下代码改自《Python算法笔记》,原本并没有实现判断是否全部完成的结点的遍历，而只是从某个节点开始进行了DFS过程，并返回了按序排列的遍历过的结点列表。res记录了节点的访问顺序，采用list而不是set是为了保证顺序正确。</p>
- <figure class="highlight vim"><table><tr><td class="code"><pre><code class="hljs vim">def dfs(G,v,S = None,<span class="hljs-keyword">res</span> = None):<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">res</span> <span class="hljs-keyword">is</span> None:<br>        <span class="hljs-keyword">res</span>=[]<br>    <span class="hljs-keyword">if</span> S <span class="hljs-keyword">is</span> None:<br>        S = <span class="hljs-keyword">set</span>()<br><br>    <span class="hljs-keyword">res</span>.<span class="hljs-keyword">append</span>(v)<br>    S.<span class="hljs-built_in">add</span>(v)<br>    <span class="hljs-keyword">for</span> <span class="hljs-keyword">u</span> in G[v]:<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">u</span> in S:<br>            <span class="hljs-keyword">continue</span><br>        S.<span class="hljs-built_in">add</span>(<span class="hljs-keyword">u</span>)<br>        dfs(G,<span class="hljs-keyword">u</span>,S,<span class="hljs-keyword">res</span>)<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">res</span><br><br>#有向无环图的邻接字典<br>G = &#123;<br>    <span class="hljs-string">&#x27;a&#x27;</span>:&#123;<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-string">&#x27;f&#x27;</span>&#125;,<br>    <span class="hljs-string">&#x27;b&#x27;</span>:&#123;<span class="hljs-string">&#x27;c&#x27;</span>,<span class="hljs-string">&#x27;d&#x27;</span>,<span class="hljs-string">&#x27;f&#x27;</span>&#125;,<br>    <span class="hljs-string">&#x27;c&#x27;</span>:&#123;<span class="hljs-string">&#x27;d&#x27;</span>&#125;,<br>    <span class="hljs-string">&#x27;d&#x27;</span>:&#123;<span class="hljs-string">&#x27;e&#x27;</span>,<span class="hljs-string">&#x27;f&#x27;</span>&#125;,<br>    <span class="hljs-string">&#x27;e&#x27;</span>:&#123;<span class="hljs-string">&#x27;f&#x27;</span>&#125;,<br>    <span class="hljs-string">&#x27;f&#x27;</span>:&#123;&#125;<br>&#125;<br><span class="hljs-keyword">res</span> = []<br><br><span class="hljs-keyword">while</span> <span class="hljs-keyword">set</span>(<span class="hljs-keyword">res</span>) != <span class="hljs-keyword">set</span>(G.<span class="hljs-built_in">keys</span>()):<br>  v = <span class="hljs-keyword">list</span>(<span class="hljs-keyword">set</span>(G.<span class="hljs-built_in">keys</span>()) - <span class="hljs-keyword">set</span>(<span class="hljs-keyword">res</span>))[<span class="hljs-number">0</span>]<br>  <span class="hljs-keyword">print</span>(v)<br>  dfs(G,v,S = <span class="hljs-keyword">set</span>(<span class="hljs-keyword">res</span>),<span class="hljs-keyword">res</span> = <span class="hljs-keyword">res</span>)<br>  <span class="hljs-keyword">print</span>(<span class="hljs-keyword">res</span>)<br><br></code></pre></td></tr></table></figure>
 
-<h3 id="1-3-DFS非递归代码"><a href="#1-3-DFS非递归代码" class="headerlink" title="1.3 DFS非递归代码"></a>1.3 DFS非递归代码</h3><p> 对于我个人而言，会更愿意用非递归的形式去解决问题，那么该如何用非递归的方式去写DFS算法呢？首先，我们需要有数据结构来帮助我们实现回溯，一般都会用栈来完成这个功能，在python中list可以很好的模拟栈。同样的我们采用set来记录已经访问的节点。<br> <br><br> 想一想，如果栈顶节点存放的是我们马上要访问的节点，那么我们应该如何做才能保证DFS的实施尤其是回溯呢？我们需要做的就是访问并弹出栈顶节点，记录该节点已经被访问，把其相邻的未被访问的节点压入栈中，直到栈为空。所以在出初始状态时，栈中应该压入访问起始节点，在之后的循环中，不断的重复之前说的操作。</p>
-<figure class="highlight vim"><table><tr><td class="code"><pre><code class="hljs vim">def dfs(G,v,S = None):<br>    stack = []<br>    <span class="hljs-keyword">if</span> S <span class="hljs-keyword">is</span> None:<br>        S = <span class="hljs-keyword">set</span>()<br>    stack.<span class="hljs-keyword">append</span>(v)<br>    <span class="hljs-keyword">while</span> stack:<br>        <span class="hljs-keyword">u</span> = stack.<span class="hljs-keyword">pop</span>()<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">u</span> in S:<br>            <span class="hljs-keyword">continue</span><br>        S.<span class="hljs-built_in">add</span>(<span class="hljs-keyword">u</span>)<br>        stack.<span class="hljs-built_in">extend</span>(G[<span class="hljs-keyword">u</span>])<br>        yield <span class="hljs-keyword">u</span><br>#有向无环图的邻接字典<br>G = &#123;<br>    <span class="hljs-string">&#x27;a&#x27;</span>:&#123;<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-string">&#x27;f&#x27;</span>&#125;,<br>    <span class="hljs-string">&#x27;b&#x27;</span>:&#123;<span class="hljs-string">&#x27;c&#x27;</span>,<span class="hljs-string">&#x27;d&#x27;</span>,<span class="hljs-string">&#x27;f&#x27;</span>&#125;,<br>    <span class="hljs-string">&#x27;c&#x27;</span>:&#123;<span class="hljs-string">&#x27;d&#x27;</span>&#125;,<br>    <span class="hljs-string">&#x27;d&#x27;</span>:&#123;<span class="hljs-string">&#x27;e&#x27;</span>,<span class="hljs-string">&#x27;f&#x27;</span>&#125;,<br>    <span class="hljs-string">&#x27;e&#x27;</span>:&#123;<span class="hljs-string">&#x27;f&#x27;</span>&#125;,<br>    <span class="hljs-string">&#x27;f&#x27;</span>:&#123;&#125;<br>&#125;<br><br><span class="hljs-keyword">res</span> = []<br><span class="hljs-keyword">while</span> <span class="hljs-keyword">set</span>(<span class="hljs-keyword">res</span>) != <span class="hljs-keyword">set</span>(G.<span class="hljs-built_in">keys</span>()):<br>  v = <span class="hljs-keyword">list</span>(<span class="hljs-keyword">set</span>(G.<span class="hljs-built_in">keys</span>()) - <span class="hljs-keyword">set</span>(<span class="hljs-keyword">res</span>))[<span class="hljs-number">0</span>]<br>  <span class="hljs-keyword">print</span>(v)<br>  <span class="hljs-keyword">res</span>.<span class="hljs-built_in">extend</span>(<span class="hljs-keyword">list</span>(dfs(G,v,S = <span class="hljs-keyword">set</span>(<span class="hljs-keyword">res</span>))))<br>  <span class="hljs-keyword">print</span>(<span class="hljs-keyword">res</span>)<br></code></pre></td></tr></table></figure>
     </div>
 </div>
 <style>
@@ -312,14 +305,21 @@
 </script>
 <div class="Last-Next">
     
-    <a href="/2021/11/16/%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84/">
+    <a href="/2021/11/19/%E6%89%91%E5%85%8B%E7%89%8C%E4%B8%AD%E7%9A%84%E9%A1%BA%E5%AD%90/">
         <div class="last">
             <span>上一篇</span>
-            <p>剑指offer12 矩阵中的路径</p>
+            <p>扑克牌中的顺子</p>
         </div>
     </a>
     
 
+    
+    <a href="/2021/11/16/%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E5%92%8C%E4%B8%BA%E6%9F%90%E4%B8%80%E5%80%BC%E7%9A%84%E8%B7%AF%E5%BE%84/">
+        <div class="next">
+            <span>下一篇</span>
+            <p>剑指offer34 二叉树中和为某一值的路径</p>
+        </div>
+    </a>
     
 </div>
 		

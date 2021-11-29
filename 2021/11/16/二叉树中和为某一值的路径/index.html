@@ -3,14 +3,15 @@
 
 	<head>
 		
-<title>Xu&#39;s-normal blog</title>
+<title>剑指offer34 二叉树中和为某一值的路径-normal blog</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="shortcut icon" type="image/x-icon" href="/image/logo.jpeg">
 
-<meta name="keywords" content="文笔拙劣">
-<meta name="description" content="Normal People">
+
+<meta name="keywords" content="LeetCode日记,树的遍历,路径搜索,">
+<meta name="description" content="">
 
 
 <script src="/js/jquery.min.js"></script>
@@ -20,7 +21,13 @@
 
 	<body>
 		
-<link rel="stylesheet" href="/css/home.css">
+<link rel="stylesheet" href="/css/page.css">
+
+
+<link rel="stylesheet" href="/css/page_cente.css">
+
+
+<link rel="stylesheet" href="/css/atom-one-dark.css">
 
 
 <link rel="stylesheet" href="/css/header.css">
@@ -36,13 +43,13 @@
 				<ul>
 					
 						
-							<li class="select">
-								<a href="/">
-									HOME
-								</a>
-								<span class="dot"></span>
-							</li>
-							
+								<li>
+									<a href="/">
+										HOME
+									</a>
+									<span class="dot"></span>
+								</li>
+								
 									
 						
 								<li>
@@ -233,275 +240,89 @@
 		<script>
 			$(function () { $(window).scroll(function () { if ($(document).scrollTop() > 100) { $(".header-top").removeClass("header-move2"); $('.header-top').addClass('header-move1') } else { $(".header-top").removeClass("header-move1"); $('.header-top').addClass('header-move2') } }) });
 		</script>
-<div class="header-bg">
-	<div class="bg-content">
-		<span>
-			<img class="site-logo" src="/image/logo.jpeg" alt="Q">
-		</span>
-		<h2>
-			Welcome to this normal Page.<br>Please forgive me for my poor writing.
-		</h2>
-	</div>
+<div class="header-bg ">
+    <div class="bg-content">
+        <ul class="tag">
+            
+            
+            <li><a href="/tags/LeetCode日记">LeetCode日记</a></li>
+            
+            <li><a href="/tags/树的遍历">树的遍历</a></li>
+            
+            <li><a href="/tags/路径搜索">路径搜索</a></li>
+            
+            
+        </ul>
+        <h1>剑指offer34 二叉树中和为某一值的路径</h1>
+        <div class="article-info">
+            <div class="article-author">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                    <g>
+                        <path fill="#12183A"
+                            d="M6.187 15.265A6.47 6.47 0 0 0 10 16.5a6.47 6.47 0 0 0 3.813-1.235A4.99 4.99 0 0 0 10 13.5a4.99 4.99 0 0 0-3.813 1.765zM5.082 14.25A6.485 6.485 0 0 1 10 12c1.965 0 3.726.872 4.918 2.25a6.5 6.5 0 1 0-9.836 0zM10 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0-1.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z">
+                        </path>
+                    </g>
+                </svg>
+                
+                <span> <a href="">Xu</a></span>
+                <p>2021-11-16 15:43:07</p>
+            </div>
+        </div>
+    </div>
 </div>
-<div class="main">
-	<div class="feed">
-		
-			<div class="feed-display">
-				<a href="/2021/11/26/%E4%B8%91%E6%95%B0/">
-					<h2 class="feed-title">
-						丑数
-					</h2>
-					
-							<img src="https://api.ixiaowai.cn/gqapi/gqapi.php" alt="Quiet">
-							
-				</a>
-				<div class="feed-meat">
-					<div class="meat-info">
-						<div class="info-auth">
-							<a href="">
-								Xu
-							</a>
-						</div>
-						<div class="info-data">
-							2021-11-26
-						</div>
-					</div>
-					<div class="meat-type"></div>
-				</div>
-			</div>
-			
-			<div class="feed-display">
-				<a href="/2021/11/25/%E6%95%B0%E7%BB%84%E5%BA%8F%E5%88%97%E4%B8%AD%E6%9F%90%E4%B8%80%E4%BD%8D%E7%9A%84%E6%95%B0%E5%AD%97/">
-					<h2 class="feed-title">
-						数组序列中某一位的数字
-					</h2>
-					
-							<img src="https://api.ixiaowai.cn/gqapi/gqapi.php" alt="Quiet">
-							
-				</a>
-				<div class="feed-meat">
-					<div class="meat-info">
-						<div class="info-auth">
-							<a href="">
-								Xu
-							</a>
-						</div>
-						<div class="info-data">
-							2021-11-25
-						</div>
-					</div>
-					<div class="meat-type"></div>
-				</div>
-			</div>
-			
-			<div class="feed-display">
-				<a href="/2021/11/23/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E6%9C%80%E5%A4%A7%E5%80%BC/">
-					<h2 class="feed-title">
-						滑动窗口最大值
-					</h2>
-					
-							<img src="https://api.ixiaowai.cn/gqapi/gqapi.php" alt="Quiet">
-							
-				</a>
-				<div class="feed-meat">
-					<div class="meat-info">
-						<div class="info-auth">
-							<a href="">
-								Xu
-							</a>
-						</div>
-						<div class="info-data">
-							2021-11-23
-						</div>
-					</div>
-					<div class="meat-type"></div>
-				</div>
-			</div>
-			
-			<div class="feed-display">
-				<a href="/2021/11/22/%E9%A1%BA%E6%97%B6%E9%92%88%E6%89%93%E5%8D%B0%E7%9F%A9%E9%98%B5/">
-					<h2 class="feed-title">
-						顺时针打印矩阵
-					</h2>
-					
-							<img src="https://api.ixiaowai.cn/gqapi/gqapi.php" alt="Quiet">
-							
-				</a>
-				<div class="feed-meat">
-					<div class="meat-info">
-						<div class="info-auth">
-							<a href="">
-								Xu
-							</a>
-						</div>
-						<div class="info-data">
-							2021-11-22
-						</div>
-					</div>
-					<div class="meat-type"></div>
-				</div>
-			</div>
-			
-			<div class="feed-display">
-				<a href="/2021/11/22/%E6%A0%88%E7%9A%84%E5%8E%8B%E5%85%A5%E5%BC%B9%E5%87%BA%E5%BA%8F%E5%88%97/">
-					<h2 class="feed-title">
-						栈的压入弹出序列
-					</h2>
-					
-							<img src="https://api.ixiaowai.cn/gqapi/gqapi.php" alt="Quiet">
-							
-				</a>
-				<div class="feed-meat">
-					<div class="meat-info">
-						<div class="info-auth">
-							<a href="">
-								Xu
-							</a>
-						</div>
-						<div class="info-data">
-							2021-11-22
-						</div>
-					</div>
-					<div class="meat-type"></div>
-				</div>
-			</div>
-			
-			<div class="feed-display">
-				<a href="/2021/11/22/%E5%9C%86%E5%9C%88%E4%B8%AD%E6%9C%80%E5%90%8E%E5%89%A9%E4%B8%8B%E7%9A%84%E6%95%B0%E5%AD%97/">
-					<h2 class="feed-title">
-						圆圈中最后剩下的数字
-					</h2>
-					
-							<img src="https://api.ixiaowai.cn/gqapi/gqapi.php" alt="Quiet">
-							
-				</a>
-				<div class="feed-meat">
-					<div class="meat-info">
-						<div class="info-auth">
-							<a href="">
-								Xu
-							</a>
-						</div>
-						<div class="info-data">
-							2021-11-22
-						</div>
-					</div>
-					<div class="meat-type"></div>
-				</div>
-			</div>
-			
-			<div class="feed-display">
-				<a href="/2021/11/22/%E5%89%AA%E7%BB%B3%E5%AD%90/">
-					<h2 class="feed-title">
-						剪绳子
-					</h2>
-					
-							<img src="https://api.ixiaowai.cn/gqapi/gqapi.php" alt="Quiet">
-							
-				</a>
-				<div class="feed-meat">
-					<div class="meat-info">
-						<div class="info-auth">
-							<a href="">
-								Xu
-							</a>
-						</div>
-						<div class="info-data">
-							2021-11-22
-						</div>
-					</div>
-					<div class="meat-type"></div>
-				</div>
-			</div>
-			
-			<div class="feed-display">
-				<a href="/2021/11/21/%E4%B8%8D%E7%94%A8%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4%E5%81%9A%E5%8A%A0%E6%B3%95/">
-					<h2 class="feed-title">
-						不用加减乘除做加法
-					</h2>
-					
-							<img src="https://api.ixiaowai.cn/gqapi/gqapi.php" alt="Quiet">
-							
-				</a>
-				<div class="feed-meat">
-					<div class="meat-info">
-						<div class="info-auth">
-							<a href="">
-								Xu
-							</a>
-						</div>
-						<div class="info-data">
-							2021-11-21
-						</div>
-					</div>
-					<div class="meat-type"></div>
-				</div>
-			</div>
-			
-			<div class="feed-display">
-				<a href="/2021/11/21/%E4%BD%8D%E8%BF%90%E7%AE%97/">
-					<h2 class="feed-title">
-						位运算
-					</h2>
-					
-							<img src="https://api.ixiaowai.cn/gqapi/gqapi.php" alt="Quiet">
-							
-				</a>
-				<div class="feed-meat">
-					<div class="meat-info">
-						<div class="info-auth">
-							<a href="">
-								Xu
-							</a>
-						</div>
-						<div class="info-data">
-							2021-11-21
-						</div>
-					</div>
-					<div class="meat-type"></div>
-				</div>
-			</div>
-			
-			<div class="feed-display">
-				<a href="/2021/11/21/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E5%90%8E%E7%BB%AD%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97/">
-					<h2 class="feed-title">
-						剑指offer33 二叉搜索树的后续遍历序列
-					</h2>
-					
-							<img src="https://api.ixiaowai.cn/gqapi/gqapi.php" alt="Quiet">
-							
-				</a>
-				<div class="feed-meat">
-					<div class="meat-info">
-						<div class="info-auth">
-							<a href="">
-								Xu
-							</a>
-						</div>
-						<div class="info-data">
-							2021-11-21
-						</div>
-					</div>
-					<div class="meat-type"></div>
-				</div>
-			</div>
-			
-	</div>
-</div>
-<div class="change-page">
-	
-			
-				<div class="n-page">
-					<a href="/page/2/">
-						<div class="next">
-							下一页
-						</div>
-					</a>
-				</div>
-				
-</div>
+<div class="article-content">
+    <div id="article" class="content">
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><img src="/2021/11/16/%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E5%92%8C%E4%B8%BA%E6%9F%90%E4%B8%80%E5%80%BC%E7%9A%84%E8%B7%AF%E5%BE%84/1.jpg" alt="avatar"></p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>很显然是树的遍历问题，我们要做的也就是求出各个结点的路径加和值以及前序路径。先序遍历应该是比较理想的选择，重点在于如何去把符合题目要求的路径保存下来，以及要注意，题目要求的是从根结点到叶子结点的路径，也就是说<strong>路径的终点一定是叶子结点</strong>。我选择做法是采用非递归的先序遍历，并且分别用字典去记录各个结点的路径加和值以及各个结点的父结点。</p>
+<p><strong>代码如下：</strong></p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><code class="hljs vim">class Solution:<br>    def pathSum(self, roo<span class="hljs-variable">t:</span> TreeNode, targe<span class="hljs-variable">t:</span> <span class="hljs-keyword">int</span>) -&gt; List[List[<span class="hljs-keyword">int</span>]]:<br>        <span class="hljs-keyword">if</span> root <span class="hljs-keyword">is</span> None:<br>            <span class="hljs-keyword">return</span> []<br>        stack = [root]<br>        path_rec = []<br>        pre_node = &#123;root : None&#125;<br>        node_sum = &#123;root : root.val&#125;<br><br>        <span class="hljs-keyword">while</span> <span class="hljs-built_in">len</span>(stack) &gt; <span class="hljs-number">0</span>:<br>            top = stack.<span class="hljs-keyword">pop</span>()<br>            now_sum = node_sum[top]<br><br>            <span class="hljs-keyword">if</span> top.<span class="hljs-keyword">right</span> <span class="hljs-keyword">is</span> not None:<br>                stack.<span class="hljs-keyword">append</span>(top.<span class="hljs-keyword">right</span>)<br>                node_sum[top.<span class="hljs-keyword">right</span>] = now_sum + top.<span class="hljs-keyword">right</span>.val<br>                pre_node[top.<span class="hljs-keyword">right</span>] = top<br><br>            <span class="hljs-keyword">if</span> top.<span class="hljs-keyword">left</span> <span class="hljs-keyword">is</span> not None:<br>                stack.<span class="hljs-keyword">append</span>(top.<span class="hljs-keyword">left</span>)<br>                node_sum[top.<span class="hljs-keyword">left</span>] = now_sum + top.<span class="hljs-keyword">left</span>.val<br>                pre_node[top.<span class="hljs-keyword">left</span>] = top<br><br>        <span class="hljs-keyword">for</span> key,value in node_sum.<span class="hljs-built_in">items</span>():<br>            <span class="hljs-keyword">if</span> value == target <span class="hljs-built_in">and</span> key.<span class="hljs-keyword">left</span> <span class="hljs-keyword">is</span> None <span class="hljs-built_in">and</span> key.<span class="hljs-keyword">right</span> <span class="hljs-keyword">is</span> None:<br>                path = [key.val]<br>                node = key<br>                <span class="hljs-keyword">while</span> pre_node[node]:<br>                    path.<span class="hljs-keyword">append</span>(pre_node[node].val)<br>                    node = pre_node[node]<br>                <br>                path_rec.<span class="hljs-keyword">append</span>(<span class="hljs-keyword">list</span>(reversed(path)))<br>                <br>        <span class="hljs-keyword">return</span>(path_rec)<br><br></code></pre></td></tr></table></figure>
 
-<script>$(function () { $('.feed').addClass('move'); })</script>
+    </div>
+</div>
+<style>
+    #noneimg img {
+        display: none;
+        z-index: 109;
+        width: 600px !important;
+        border-radius: 0px;
+        position: fixed;
+        box-shadow: 0 0 0px #c3c3c300 !important;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto !important;
+    }
+
+    @media screen and (max-width:600px) {
+        #noneimg img {
+            width: 88%
+        }
+    }
+</style>
+<script>
+    $(function () { $('#article').click(function (e) { if (e.target.tagName == "IMG") { if ($('#nonediv').length == 0) { let MImg = `<div id='noneimg'><img src='${e.target.currentSrc}'></div>`; let MDiv = "<div id='nonediv' style='cursor: pointer;display: none; position: fixed;left: 0;top: 0; right: 0;bottom: 0;background-color: #333;opacity:0.5;z-index: 108;'></div>"; $('#article').append(MDiv); $('#article').append(MImg); $("#nonediv").fadeIn("slow"); $("#noneimg img").fadeIn("slow") } } else { if ($('#nonediv').length !== 0) { $("#noneimg ").fadeOut("slow"); $("#nonediv").fadeOut("slow"); setTimeout(function () { $('#nonediv').remove(); $('#noneimg').remove() }, 500) } } }); $('.article-content').addClass('content-move') });
+</script>
+<div class="Last-Next">
+    
+    <a href="/2021/11/16/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%8E%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/">
+        <div class="last">
+            <span>上一篇</span>
+            <p>剑指offer36 二叉搜索树与双向链表</p>
+        </div>
+    </a>
+    
+
+    
+    <a href="/2021/11/16/%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E8%BF%90%E5%8A%A8%E8%8C%83%E5%9B%B4/">
+        <div class="next">
+            <span>下一篇</span>
+            <p>剑指offer13 机器人的运动范围</p>
+        </div>
+    </a>
+    
+</div>
 		
 <link rel="stylesheet" href="/css/food.css">
 
